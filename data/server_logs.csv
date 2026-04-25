@@ -1,0 +1,8 @@
+timestamp,level,source_ip,message
+2026-04-25 10:00:01,INFO,192.168.1.10,System startup normal
+2026-04-25 10:05:22,WARNING,10.0.0.5,High CPU usage on process PID 4092
+2026-04-25 10:11:00,INFO,127.0.0.1,Backup cron job started
+2026-04-25 10:12:01,ERROR,203.0.113.42,Failed password for root
+2026-04-25 10:12:02,ERROR,203.0.113.42,Failed password for root
+2026-04-25 10:12:03,CRITICAL,203.0.113.42,BRUTE FORCE ATTACK DETECTED
+2026-04-25 10:13:00,WARNING,192.168.1.10,Unusual outbound traffic detected
