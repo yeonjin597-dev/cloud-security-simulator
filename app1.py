@@ -6,7 +6,7 @@ import time
 # (1) 페이지 기본 설정 및 레이아웃
 # ==========================================
 st.set_page_config(
-    page_title="클라우드 보안 사고 대응 실습", 
+    page_title="클라우드 보안 사고 대응 퀴즈", 
     page_icon="🛡️", 
     layout="wide"
 )
@@ -27,12 +27,14 @@ if 'show_explanation' not in st.session_state:
 
 # ==========================================
 # (3) 캐싱 기능 (@st.cache_data)
-# ==========================================
-@st.cache_data(show_spinner="보안 로그를 분석 중입니다...")
+# ========================================
+@st.cache_data
 def load_server_logs():
-    # 데이터 로드 시 성능 최적화를 위한 캐싱 처리
-    time.sleep(1.2)
-    return pd.read_csv("data/server_logs.csv")
+    with st.spinner("🔍 시스템에서 대용량 보안 로그를 정밀 분석 중입니다..."):
+        # 1.2초보다 3초가 나은듯? 캐싱기능시연
+        time.sleep(3.0) 
+        data = pd.read_csv("data/server_logs.csv")
+    return data
 
 # ==========================================
 # (4) 메인 헤더
@@ -40,7 +42,7 @@ def load_server_logs():
 def show_header():
     st.markdown(f"""
         <div style="background-color: #f8f9fa; padding: 25px; border-radius: 10px; border-left: 6px solid #2e59d9; margin-bottom: 20px;">
-            <h2 style="color: #333333; margin-bottom: 5px;">🛡️ 통합 클라우드 보안 사고 대응 실습</h2>
+            <h2 style="color: #333333; margin-bottom: 5px;">🛡️ 통합 클라우드 보안 사고 대응 퀴즈</h2>
             <p style="color: #555555; margin-top: 10px; font-size: 16px;">
                 <b>담당 관리자:</b> 정연진 (학번: 2025404018)
             </p>
@@ -81,7 +83,8 @@ def main_dashboard():
 
     if st.session_state.is_finished:
         show_final_report()
-        return
+        return    
+      
 
     # [중요] 로그 뷰어 상시 노출 (초보자를 위해 항상 위에 배치)
     st.markdown("### 🔍 실시간 서버 로그 모니터링")
@@ -90,7 +93,7 @@ def main_dashboard():
     st.caption("※ 이 로그 데이터는 캐싱 기술을 통해 분석 속도가 최적화되었습니다.")
     st.markdown("---")
 
-    # 퀴즈 데이터 및 "진짜 긴" 해설
+
     quiz_data = {
         1: {
             "title": "1단계: 공격자 IP 추적",
