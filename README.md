@@ -1,4 +1,18 @@
-# 🛡️ 보안 사고 대응 실습 기반 퀴즈
+
+
+# Cloud Security Simulator
+
+오픈소스소프트웨어 실습 3 - EC2 Streamlit 배포
+
+## 실행 방법
+```bash
+streamlit run app1.py
+```
+
+## 배포 환경
+- AWS EC2 Ubuntu 22.04
+- Python 3.x
+- Streamlit
 
 이 프로젝트는 실전형 클라우드 보안 사고 대응 능력을 기르기 위한 시뮬레이션 웹 애플리케이션입니다!
 
